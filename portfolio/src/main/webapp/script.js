@@ -26,3 +26,40 @@ function addRandomGreeting() {
   const greetingContainer = document.getElementById('greeting-container');
   greetingContainer.innerText = greeting;
 }
+
+
+var image_number = 1;
+/**
+ * Changes page background in a loop.
+ */
+function changeTheme() {
+    var image_string;
+
+    switch (image_number) {
+        case 0:
+            image_string = "url(../images/background.png)";
+            image_number = 1;
+            break;
+        case 1:
+            image_string = "url(../images/background-bottom.png)";
+            image_number = 2;
+            break;
+        case 2:
+            image_string = "url(../images/background-dark.png)";
+            image_number = 3;
+            break;
+        case 3:
+            image_string = "url(../images/background-dark-bottom.png)";
+            image_number = 4;
+            break;
+        case 4:
+            image_string = "url(../images/background-sofia.png)";
+            image_number = 5;
+            break;
+        case 5:
+            image_string = "url(../images/background-sofia-bottom.png)";
+            image_number = 0;
+            break;
+    }
+    document.getElementById("page-body").style.backgroundImage = image_string;
+}
