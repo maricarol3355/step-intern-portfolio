@@ -2,14 +2,58 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>My Portfolio</title>
+    <title>Marissa's Portfolio </title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
   </head>
-  <body>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=DM Mono">
+
+  <style>
+  body {
+    font-family: "DM Mono";
+    font-size: 22px;
+    }
+  div.dashed {
+    border-style: dashed;
+    }
+  </style>
+
+  <body id = "page-body">
     <div id="content">
-      <h1>My Portfolio</h1>
-      <p>This is my portfolio.</p>
+      <h1>🐈🍡 Marissa's Portfolio🐈🍡</h1>
+      <h3>Hi my name is Marissa Beltran and this is my portfolio as a STEP Intern 2020!</p>
+      <br>
+      <p>🌌🌌🌌🌌🌌 Click here to change the color theme!! 🌌🌌🌌🌌🌌:
+      <button onclick="changeTheme()">CHANGE THEME</button> </p>
+      <br>
+        <div id="about-me" class="dashed">
+            <h2>About me 🐕:</h2>
+            <p>- This is my 2nd time interning for Google</p>
+            <p>- My major is Software Engineering @ CSUSM</p>
+            <p>- Just finished my term as President for CSUSM's IEEE student branch</p>
+            <p>- Tutor in C++ and Assembly</p>
+            <p>- Love Rilakkuma and BT21</p>
+            <p>- Prefer horror indie games and pixelated graphics</p>
+            <p>- Mostly play PC games, but recently got a Switch!</p>
+            <p>- Bullet journal & read manga on long days</p>
+            <p>- I used to do some pixel graphics on my own</p>
+            <p>- A cat person (for the most part)</p>
+        </div>
+        <br>
+        <div id="my-picture" class="dashed">
+            <img src="images/me.jpg" style="width:100%;height:100%;"/>
+        </div>
+        <br>
+        <div id="goals" class="dashed">
+            <h2>Quarantine Goals?</h2>
+            <p>I'm working on finding a healthy life balance and a routine. 
+               I'm using bullet journaling to help keep my thoughts in a safe place
+               and I might start using it to set up and stick to a schedule. I fear
+               the lack of routine so I want to build one for my own and actually follow
+               it. So far I've been doing really well with cooking too! However
+               I'm falling behind on keeping my room neat on the daily.</p>
+        </div>
+        <br>
       <p>Click here to get a random message:</p>
       <button onclick="addRandomGreeting()">Hello</button>
       <div id="greeting-container"></div>
