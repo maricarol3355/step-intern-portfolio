@@ -12,6 +12,40 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+function getRandomHello() {
+  console.log('Fetching a random hello.');
+
+  // The fetch() function returns a Promise because the request is asynchronous.
+  const responsePromise = fetch('/hello');
+
+  // When the request is complete, pass the response into handleResponse().
+  responsePromise.then(handleResponse);  
+}
+
+/**
+ * Handles response by converting it to text and passing the result to
+ * addQuoteToDom().
+ */
+function handleResponse(response) {
+  console.log('Handling the response.');
+
+  // response.text() returns a Promise, because the response is a stream of
+  // content and not a simple variable.
+  const textPromise = response.text();
+
+  // When the response is converted to text, pass the result into the
+  // addQuoteToDom() function.
+  textPromise.then(addHelloToDom);
+}
+
+/** Adds a random quote to the DOM. */
+function addHelloToDom(hello) {
+  console.log('Adding hello to dom: ' + hello);
+
+  const helloContainer = document.getElementById('hello-container');
+  helloContainer.innerText = hello;
+}
+
 /**
  * Adds a random greeting to the page.
  */
