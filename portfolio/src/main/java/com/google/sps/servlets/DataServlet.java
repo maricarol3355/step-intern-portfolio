@@ -20,13 +20,39 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import java.util.List;
+import java.util.ArrayList;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
 @WebServlet("/hello")
 public class DataServlet extends HttpServlet {
+    private List<String> commments = new ArrayList<>();
 
-  @Override
-  public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    response.setContentType("text/html;");
-    response.getWriter().println("<h1>Hello Marissa!</h1>");
-  }
+    @Override
+    public void init() {
+        commments.add("My name is Marissa");
+        commments.add("I have been feeling sick for a bit");
+        commments.add("Have a good day!");
+    }
+
+    @Override
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        //TODO: tags must not appear on screen when printing "<h1>Hello Marissa!</h1>"
+        response.setContentType("text/html;");
+        response.getWriter().println("Hello Marissa!");
+
+        String json = convertToJsonUsingGson(commments);
+        response.setContentType("applications/json;");
+        response.getWriter().println(json);
+    }
+
+    public String convertToJsonUsingGson(List commments) {
+        Gson gson = new Gson();
+        String json = gson.toJson(commments);
+        return json;
+    }
+
 }
+
