@@ -25,34 +25,34 @@ import java.util.ArrayList;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-/** Servlet that returns some example content. TODO: modify this file to handle comments data */
+/** Servlet that returns some example content. TODO: the name of this file */
 @WebServlet("/hello")
 public class DataServlet extends HttpServlet {
-    private List<String> commments = new ArrayList<>();
+  private List<String> text = new ArrayList<>();
 
-    @Override
-    public void init() {
-        commments.add("My name is Marissa");
-        commments.add("I have been feeling sick for a bit");
-        commments.add("Have a good day!");
-    }
+  @Override
+  public void init() {
+    text.add("My name is Marissa");
+    text.add("I have been feeling sick for a bit");
+    text.add("Have a good day!");
+  }
 
-    @Override
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        //TODO: tags must not appear on screen when printing "<h1>Hello Marissa!</h1>"
-        response.setContentType("text/html;");
-        response.getWriter().println("Hello Marissa!");
+  @Override
+  public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    //TODO: tags must not appear on screen when printing "<h1>Hello Marissa!</h1>"
+    response.setContentType("text/html;");
+    response.getWriter().println("Hello Marissa!");
 
-        String json = convertToJsonUsingGson(commments);
-        response.setContentType("applications/json;");
-        response.getWriter().println(json);
-    }
+    String json = convertToJsonUsingGson(text);
+    response.setContentType("applications/json;");
+    response.getWriter().println(json);
+  }
 
-    public String convertToJsonUsingGson(List commments) {
-        Gson gson = new Gson();
-        String json = gson.toJson(commments);
-        return json;
-    }
+  // TODO: (nit) Generalize "comments" so that future inputs can use this method too.
+  public String convertToJsonUsingGson(List text) {
+    Gson gson = new Gson();
+    String json = gson.toJson(text);
+    return json;
+  }
 
 }
-
