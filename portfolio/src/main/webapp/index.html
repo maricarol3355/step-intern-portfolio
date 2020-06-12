@@ -64,11 +64,11 @@
       <div id="hello-container"></div>
       <br></br>
       <div id="comments-processor" class="dashed">
-        <h1>Comments n' Feedback</h1> <!-- Text Processor -->
+        <h1>Comments n' Feedback</h1>
 
         <form action="/comment" method="POST">
           <p>Enter your comments n' feedback on my portfolio!:</p>
-          <textarea name="comment-input">one, two, three</textarea> <!-- style="width:100%; height:100%;">Bee kind!</textarea>-->
+          <textarea name="comment-input" style="width:100%; height:100%;">Enter your comments and feedback</textarea>
           <br/><br/>
 
           <p>Select your experience:</p>
@@ -82,11 +82,16 @@
           <br/>
           <input type="checkbox" name="ugh" value="true"> 😤
           <br/><br/>
-
           <input type="submit" />
+          <br/><br/>
         </form>
       </div>
-
+      <br>
+      <p>Click here to load recent comments:</p>
+      <button onclick="loadComments()">Load Comments</button>
+      <br>
+      <div id="comments-container"></div>
+      <br></br>
       <br>
     </div>
   </body>

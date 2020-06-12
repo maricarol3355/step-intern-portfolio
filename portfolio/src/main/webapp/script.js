@@ -11,6 +11,13 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+function loadComments(){
+  console.log('Loading comments...');
+
+  fetch('/list-comments').then(response => response.text()).then((comments) => {
+    document.getElementById('comments-container').innerText = comments;
+  });
+}
 
 function getRandomHello() {
   console.log('Fetching a random hello.');
@@ -18,16 +25,16 @@ function getRandomHello() {
   // The fetch() function returns a Promise because the request is asynchronous.
   const responsePromise = fetch('/hello');
 
-  // When the request is complete, pass the response into handleResponse().
-  responsePromise.then(handleResponse);  
+  // When the request is complete, pass the response into handleRandomHelloResponse().
+  responsePromise.then(handleRandomHelloResponse);  
 }
 
 /**
  * Handles response by converting it to text and passing the result to
  * addQuoteToDom().
  */
-function handleResponse(response) {
-  console.log('Handling the response.');
+function handleRandomHelloResponse(response) {
+  console.log('Handling the random hello response.');
 
   // response.text() returns a Promise, because the response is a stream of
   // content and not a simple variable.
