@@ -17,6 +17,10 @@ package com.google.sps.servlets;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.PreparedQuery;
+import com.google.appengine.api.datastore.Query;
+import com.google.appengine.api.datastore.Query.SortDirection;
+import com.google.gson.Gson;
 import java.io.IOException;
 import java.util.Arrays;
 import javax.servlet.annotation.WebServlet;
@@ -28,37 +32,28 @@ import java.util.List;
 import java.util.ArrayList;
 
 /** Servlet that processes comments and feedback. */
-@WebServlet("/comment")
-public class CommentsProcessorServlet extends HttpServlet {
-
+@WebServlet("/list-comments")
+public class CommentsLoaderServlet extends HttpServlet {
   @Override
-  public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-
-    // Get the input from the form.
-    String comment = request.getParameter("comment-input");
-    long timestamp = System.currentTimeMillis();
-
-    // Store as entities in Datastore
-    Entity commentEntity = new Entity("Comment");
-    commentEntity.setProperty("body", comment);
-    commentEntity.setProperty("timestamp", timestamp);
+  public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    Query query = new Query("Comment").addSort("timestamp", SortDirection.DESCENDING);
 
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-    datastore.put(commentEntity);
+    PreparedQuery results = datastore.prepare(query);
 
-    // Redirect the client to same URL.
-    response.sendRedirect("/index.html");
-  }
+    List<String> commentList = new ArrayList<>();
 
-  /**
-   * @return the request parameter, or the default value if the parameter
-   *         was not specified by the client
-   */
-  private String getParameter(HttpServletRequest request, String name, String defaultValue) {
-    String value = request.getParameter(name);
-    if (value == null) {
-      return defaultValue;
+    for (Entity entity : results.asIterable()) {
+      String comment = (String) entity.getProperty("body");
+      commentList.add(comment);
     }
-    return value;
+
+    Gson gson = new Gson();
+
+    response.setContentType("application/json;");
+    //response.getWriter().println(commentList);
+    for( String comm : commentList ) {
+      response.getWriter().println(comm);
+    }
   }
 }
