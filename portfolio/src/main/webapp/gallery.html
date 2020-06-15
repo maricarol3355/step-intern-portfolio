@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Marissa's Gallery </title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+    <script src="galleryscript.js"></script>
   </head>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=DM Mono">
   <body id = "page-body">
@@ -14,7 +14,29 @@
       <br>
       <a href="/index.html" class="previous">&laquo; Previous</a>
       <a href="#" class="next">Next &raquo;</a>
-      <br>
+      <br></br>
+        <div id="gallery-description" class="dashed">
+          <h2>Week 4 of API tutorials:</h2>
+          <p>- I have decided to learn & implement Blobstore into my website!</p>
+          <p>- The tutorial: teachme \</p>
+          <p>- ~/step/walkthroughs/week-4-libraries/blobstore/blobstore-walkthrough.md</p>
+          <p>- yeah that's about it...</p>
+        </div>
+        <br>
+        <div id="gallery-submission" class="dashed">
+          <h2>Marissa's Submitions:</h2>
+          <form action="/gallery-submit" method="POST">
+            <label for="myfile">Select files:</label>
+            <input type="file" id="myfile" name="myfile" multiple>
+            <br><br>
+            <input type="submit">
+          </form>
+        </div>
+        <br>
+        <div id="gallery-display" class="dashed">
+          <h2>Marissa's Gallery:</h2>
+          <p>- Displaying the art I've submitted so far!</p>
+        </div>
     </div>
   </body>
 </html>
