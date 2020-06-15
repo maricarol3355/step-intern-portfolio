@@ -51,7 +51,6 @@ public class CommentsLoaderServlet extends HttpServlet {
     Gson gson = new Gson();
 
     response.setContentType("application/json;");
-    //response.getWriter().println(commentList);
     for( String comm : commentList ) {
       response.getWriter().println(comm);
     }

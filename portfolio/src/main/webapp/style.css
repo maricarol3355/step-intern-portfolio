@@ -4,7 +4,8 @@ body {
     background-color: #cccccc;
     border-radius: 8px;
     margin: 40px;
-    
+    font-family: "DM Mono";
+    font-size: 22px;
 }
 
 div {
@@ -12,6 +13,10 @@ div {
     fill-opacity: 0.2;
     border-radius: 8px;
     padding: 50px;
+}
+
+div.dashed {
+      border-style: dashed;
 }
 
 #content {
@@ -41,3 +46,24 @@ p {
 }
 
 p.dotted {border-style: dotted;}
+
+a {
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px 16px;
+}
+
+a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.previous {
+  background-color: #f1f1f1;
+  color: black;
+}
+
+.next {
+  background-color: #dcb8b8;
+  color: white;
+}
