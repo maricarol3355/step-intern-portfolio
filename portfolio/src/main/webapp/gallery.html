@@ -7,7 +7,7 @@
     <script src="galleryscript.js"></script>
   </head>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=DM Mono">
-  <body id = "page-body">
+  <body onload="fetchBlobstoreUrlAndShowForm()"">
     <div id="content">
       <h1>🐈🍡 Marissa's Gallery🐈🍡</h1>
       <h3>Hi, this is a Gallery of my pixel graphics!</p>
@@ -25,17 +25,16 @@
         <br>
         <div id="gallery-submission" class="dashed">
           <h2>Marissa's Submitions:</h2>
-          <form action="/gallery-submit" method="POST">
-            <label for="myfile">Select files:</label>
-            <input type="file" id="myfile" name="myfile" multiple>
+          <form id="my-form" class="hidden" method="POST" enctype="multipart/form-data">
+            <p>Upload an image:</p>
+            <input type="file" name="image">
+            <br/>
+            <p>Image Description:</p>
+            <textarea name="message"></textarea>
+            <br/><br/>
+            <button>Submit</button>
             <br><br>
-            <input type="submit">
           </form>
-        </div>
-        <br>
-        <div id="gallery-display" class="dashed">
-          <h2>Marissa's Gallery:</h2>
-          <p>- Displaying the art I've submitted so far!</p>
         </div>
     </div>
   </body>
